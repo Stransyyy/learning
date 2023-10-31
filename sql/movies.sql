@@ -92,3 +92,8 @@ SELECT Users.User_ID, UserCollections.Collection_Type FROM Users INNER JOIN User
 
 -- This displays all the artwork from each movie.
 SELECT Artwork.URL, Movies.Title FROM Artwork LEFT JOIN Movies ON Artwork.ID = Movies.ID;
+
+-- want the user to be able to see the artwork from its usercollection he previosly made
+
+-- Shows the artwork of the first movie that is in tusercollection table of each user
+SELECT Users.Name, Artwork.URL, UserCollections.Collection_Type FROM Users INNER JOIN Artwork ON Users.User_ID = Artwork.ID INNER JOIN UserCollections ON Artwork.ID = UserCollections.User_ID;
