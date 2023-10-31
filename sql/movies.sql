@@ -73,4 +73,22 @@ INNER JOIN UserCollections ON UserCollections.User_ID = Users.User_ID
 INNER JOIN MovieCollections ON UserCollections.Collection_ID = MovieCollections.Collection_ID
 INNER JOIN Movies ON Movies.ID = MovieCollections.Movie_ID;
 
-SELECT
+-- Edits the name of the table
+RENAME TABLE Collectiontype TO CollectionTypes;
+
+-- Selects the max value of a column
+SELECT MAX(User_ID) FROM Users;
+
+-- This modifies the Data type of a column from a table, used to have a varchar(4) now is a YEAR datatype
+ALTER TABLE Movies ALTER COLUMN Year_Published YEAR
+
+SELECT * FROM Movies;
+
+SELECT Year_Published FROM Movies WHERE Year_Published BETWEEN 2022 AND 2023
+
+
+-- Shows the 'User_ID' from 'Users', and the 'Collection_Type' from the 'UserCollections' table and displays which collection type have each user has used to store their movies
+SELECT Users.User_ID, UserCollections.Collection_Type FROM Users INNER JOIN UserCollections ON Users.User_ID = Users.User_ID;
+
+-- This displays all the artwork from each movie.
+SELECT Artwork.URL, Movies.Title FROM Artwork LEFT JOIN Movies ON Artwork.ID = Movies.ID;
